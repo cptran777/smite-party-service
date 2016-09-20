@@ -4,7 +4,7 @@
   "description": "Server-side service for the smite-party application",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node index.js & mocha --bail --reporter nyan test/ServerSpec.js; pkill -n node;"
   },
   "repository": {
     "type": "git",
