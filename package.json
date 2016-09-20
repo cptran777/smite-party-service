@@ -1,0 +1,27 @@
+{
+  "name": "smite-party-service",
+  "version": "1.0.0",
+  "description": "Server-side service for the smite-party application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cptran777/smite-party-service.git"
+  },
+  "keywords": [
+    "server",
+    "service",
+    "smite",
+    "party",
+    "pentakill",
+    "hirez"
+  ],
+  "author": "Charlie Tran",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cptran777/smite-party-service/issues"
+  },
+  "homepage": "https://github.com/cptran777/smite-party-service#readme"
+}
