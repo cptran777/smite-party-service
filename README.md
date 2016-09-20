@@ -1,2 +1,33 @@
 # smite-party-service
 Server-side service for smite-party application
+
+Please support the official game:
+[Smite Official Site](https://www.smitegame.com/ "Smite Official Site")
+
+## Functionality
+
+This is a purely backend service that will receive requests for randomized Smite assignments and return randomized roles in its response. 
+
+[Link to Frontend Client](https://github.com/cptran777/smite-party)
+
+## Extensions
+
+Currently, the first iteration of the API will be a single file that contains the available roles inside lists on the server. A request is received and the response will be sent after randomization functionality has been called.
+
+### Iteration Plans: 
+
+1) Customized lists. Basic lists of gods should include them purely sorted by type (Warrior, Mage, etc). Then there should be role-based lists (Healer, Tank, CC, etc) in addition to the fixed role lists (Jungler, Mid, etc). The goal will be to allow people to choose what type or role based list should be included in a role instead of a purely fixed list. 
+
+2) Move these lists to a relational database, probably MySQL or Postgres. 
+
+3) Customized queries for different numbers of players, inclusion or exclusion of roles or gods from each pool for the query.
+
+## Architecture
+
+This is purely a backend service, so it operates independently of the main app. The only functionality of this service right now is to take a request and respond with randomized roles. This service can probably be used to randomize roles for requests coming from both a web and mobile request to a backend. As the application itself begins to expand to become more of a Smite resource, the service might expand to include details about each god. However, that may be a separate service altogether. 
+
+## Deployment
+
+This application will be deployed on Heroku for simplicity. 
+
+## Issues and Challenges 
