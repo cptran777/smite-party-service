@@ -8,6 +8,6 @@ module.exports = function(players, roles, gods) {
 
   return {
   	players: players,
-  	list: list
+  	roles: roles
   };
 }

@@ -1,6 +1,8 @@
 var expect = require('chai').expect;
 var request = require('request');
 
+var randomizer = require('../randomizer');
+
 /************************************************************/
 // Mocha doesn't have a way to designate pending before blocks.
 // Mimic the behavior of xit and xdescribe with xbeforeEach.
@@ -16,12 +18,15 @@ describe('', function() {
   beforeEach(function() {
   });
 
-  describe('First Test', function() {
+  describe('Randomizer', function() {
 
     xbeforeEach(function(done) {
     });
 
     it('Does something', function(done) {
+      var party = ['Charlie', 'Matt', 'Brent'];
+      var roles = ['Guardian', 'Hunter', 'Mage'];
+      expect(typeof randomizer(party, roles).players).to.equal('object');
       done();
     });
 
