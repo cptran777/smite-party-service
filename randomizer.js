@@ -17,8 +17,6 @@ module.exports = (players, roles, gods) => {
 
   }
 
-  console.log('Shuffled roles: ', roles);
-
   for (let y = 0; y < players.length; y++) {
   	result[players[y]] = roles[y];
   }
