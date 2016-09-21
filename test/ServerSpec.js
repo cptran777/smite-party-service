@@ -22,11 +22,13 @@ describe('', () => {
       let options = {
         uri: 'http://127.0.0.1:8000/api',
         json: {
-          party: ['Charlie', 'Brent', 'Kevin']
+          party: ['Charlie', 'Brent', 'Kevin'],
+          roles: ['Guardian', 'Hunter', 'Mage']
         }
       };
       request(options, function(error, res, body) {
         console.log('Request body: ', body);
+        done();
       });
     });
   });
@@ -54,7 +56,7 @@ describe('', () => {
       let randomRoles = [];
 
       for (let player in randomizedResult) {
-        randomRoles.push(randomizedResult[player]);
+        randomRoles.push(randomizedResult[player][0]);
       }
 
       expect(randomRoles.length).to.equal(roles.length);
