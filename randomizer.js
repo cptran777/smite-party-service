@@ -10,7 +10,6 @@ module.exports = (players, roles, gods) => {
   for (let x = roles.length - 1; x > 0; x--) {
   	
   	let idx = Math.floor(Math.random() * (x + 1));
-  	console.log('log idx', idx);
   	let holder = roles[x];
   	roles[x] = roles[idx];
   	roles[idx] = holder;
@@ -18,7 +17,13 @@ module.exports = (players, roles, gods) => {
   }
 
   for (let y = 0; y < players.length; y++) {
-  	result[players[y]] = roles[y];
+  	if (gods) {
+  	  let possibleGods = gods[roles[y]];
+  	  let randomSelector = Math.floor(Math.random() * possibleGods.length);
+  	  result[players[y]] = [roles[y], possibleGods[randomSelector]];
+  	} else {
+  	  result[players[y]] = [roles[y], null]
+  	}
   }
 
   return result;
