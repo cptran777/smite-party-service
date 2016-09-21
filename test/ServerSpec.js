@@ -34,6 +34,20 @@ describe('', () => {
       done();
     });
 
+    it('Returns an object where each player is assigned a role and all roles are assigned', (done) => {
+
+      let randomRoles = [];
+
+      for (let player in randomizedResult) {
+        randomRoles.push(randomizedResult[player]);
+      }
+
+      expect(randomRoles.length).to.equal(roles.length);
+      for (let x = 0; x < roles.length; x++) {
+        expect(randomRoles).to.contain(roles[x]);
+      }
+    });
+
     describe('Inner test', () => {
 
       it('Does something else', (done) => {
