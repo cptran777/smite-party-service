@@ -1,5 +1,6 @@
 let expect = require('chai').expect;
 let request = require('request');
+let bodyparser = require('body-parser');
 
 let randomizer = require('../randomizer');
 
@@ -14,6 +15,20 @@ let xbeforeEach = function() {};
 describe('', () => {
 
   beforeEach(() => {
+  });
+
+  describe('Base API request', () => {
+    it('Reads the request body', (done) => {
+      let options = {
+        uri: 'http://127.0.0.1:8000/api',
+        json: {
+          party: ['Charlie', 'Brent', 'Kevin']
+        }
+      };
+      request(options, function(error, res, body) {
+        console.log('Request body: ', body);
+      });
+    });
   });
 
   describe('Randomizer', () => {

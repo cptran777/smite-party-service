@@ -6,6 +6,9 @@ module.exports = (players, roles, gods) => {
   
   let result = {};
 
+  players = players || [];
+  roles = roles || [];
+
   // Use Fisher Yates shuffle algorithm on roles to randomize
   for (let x = roles.length - 1; x > 0; x--) {
   	

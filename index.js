@@ -26,7 +26,17 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api', (req, res) => {
-  res.send(randomizer(['Charlie', 'Brent', 'Matt', 'Kevin', 'Andrew'], ['carry', 'jungler', 'support', 'mid', 'solo'], gods));
+  console.log('req body? :', req.body);
+  let players, roles;
+  if (req.body.players) {
+  	players = req.body.players;
+  	roles = req.body.roles;
+  } else {
+  	// Default values
+  	players = ['Charlie', 'Brent', 'Matt', 'Kevin', 'Andrew'];
+  	roles = ['carry', 'jungler', 'support', 'mid', 'solo'];
+  }
+  res.send(randomizer(players, roles, gods));
 });
 
 /********************* INIT SERVER *************************/
