@@ -8,6 +8,7 @@ let app = express();
 /***************** INIT CUSTOM MODULES *********************/
 
 let randomizer = require('./randomizer');
+let gods = require('./store');
 
 /******************* INIT MIDDLEWARE ***********************/
 
@@ -25,7 +26,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api', (req, res) => {
-  res.send(randomizer(['Charlie', 'Brent', 'Matt', 'Kevin', 'Andrew'], ['Carry', 'Jungler', 'Support']));
+  res.send(randomizer(['Charlie', 'Brent', 'Matt', 'Kevin', 'Andrew'], ['carry', 'jungler', 'support', 'mid', 'solo'], gods));
 });
 
 /********************* INIT SERVER *************************/
