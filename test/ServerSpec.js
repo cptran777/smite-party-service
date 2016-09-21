@@ -46,6 +46,8 @@ describe('', () => {
       for (let x = 0; x < roles.length; x++) {
         expect(randomRoles).to.contain(roles[x]);
       }
+
+      done();
     });
 
     describe('Inner test', () => {
