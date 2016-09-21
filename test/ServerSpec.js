@@ -26,7 +26,12 @@ describe('', () => {
     it('Returns an object with the players input as properties of said object', (done) => {
       let party = ['Charlie', 'Matt', 'Brent'];
       let roles = ['Guardian', 'Hunter', 'Mage'];
-      expect(randomizer(party, roles)).to.deep.equal({ Charlie: true, Matt: true, Brent: true });
+
+      let randomizedResult = randomizer(party, roles);
+
+      for (let x = 0; x < party.length; x++) {
+        expect(randomizedResult).to.have.property(party[x]);
+      }
       done();
     });
 
