@@ -1,7 +1,7 @@
-var expect = require('chai').expect;
-var request = require('request');
+let expect = require('chai').expect;
+let request = require('request');
 
-var randomizer = require('../randomizer');
+let randomizer = require('../randomizer');
 
 /************************************************************/
 // Mocha doesn't have a way to designate pending before blocks.
@@ -9,30 +9,30 @@ var randomizer = require('../randomizer');
 // Remove the 'x' from beforeEach block when working on
 // authentication tests.
 /************************************************************/
-var xbeforeEach = function() {};
+let xbeforeEach = function() {};
 /************************************************************/
 
 
-describe('', function() {
+describe('', () => {
 
-  beforeEach(function() {
+  beforeEach(() => {
   });
 
-  describe('Randomizer', function() {
+  describe('Randomizer', () => {
 
-    xbeforeEach(function(done) {
+    xbeforeEach((done) => {
     });
 
-    it('Does something', function(done) {
-      var party = ['Charlie', 'Matt', 'Brent'];
-      var roles = ['Guardian', 'Hunter', 'Mage'];
-      expect(typeof randomizer(party, roles).players).to.equal('object');
+    it('Returns an object with the players input as properties of said object', (done) => {
+      let party = ['Charlie', 'Matt', 'Brent'];
+      let roles = ['Guardian', 'Hunter', 'Mage'];
+      expect(randomizer(party, roles)).to.deep.equal({ Charlie: true, Matt: true, Brent: true });
       done();
     });
 
-    describe('Inner test', function() {
+    describe('Inner test', () => {
 
-      it('Does something else', function(done) {
+      it('Does something else', (done) => {
         // Async function() {
           done();
         // }

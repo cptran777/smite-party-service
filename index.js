@@ -1,17 +1,17 @@
 /******************* INIT DEPENDENCIES *********************/
 
-var express = require('express');
-var bodyparser = require('body-parser');
+let express = require('express');
+let bodyparser = require('body-parser');
 
-var app = express();
+let app = express();
 
 /***************** INIT CUSTOM MODULES *********************/
 
-var randomizer = require('./randomizer');
+let randomizer = require('./randomizer');
 
 /******************* INIT MIDDLEWARE ***********************/
 
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
@@ -20,17 +20,17 @@ app.use(bodyparser.json());
 
 /********************* INIT ROUTES *************************/
 
-app.get('/', function(req, res) {
+app.get('/', (req, res) => {
   res.send('This is a service for Smite Party');
 });
 
-app.get('/api', function(req, res) {
+app.get('/api', (req, res) => {
   res.send(randomizer(['Charlie', 'Brent', 'Matt', 'Kevin', 'Andrew'], ['Carry', 'Jungler', 'Support']));
 });
 
 /********************* INIT SERVER *************************/
 
-var port = process.env.PORT || 8000;
-var server = app.listen(port, ()=>{
+let port = process.env.PORT || 8000;
+let server = app.listen(port, ()=>{
   console.log('Listening on port', port);
 });
