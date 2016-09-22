@@ -21,7 +21,7 @@ module.exports = (players, roles, gods) => {
 
   for (let y = 0; y < players.length; y++) {
   	if (gods) {
-  	  let possibleGods = gods[roles[y]];
+  	  let possibleGods = gods[roles[y]] || [];
   	  let randomSelector = Math.floor(Math.random() * possibleGods.length);
   	  result[players[y]] = [roles[y], possibleGods[randomSelector]];
   	} else {
