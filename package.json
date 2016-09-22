@@ -4,6 +4,11 @@
   "description": "Server-side service for the smite-party application",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index.js",
+    "build": "npm run build:dev",
+    "build:dev": "webpack --watch -d",
+    "build:prod": "webpack",
+    "postinstall": "npm run build:prod",
     "test": "node index.js & mocha --bail --reporter nyan test/ServerSpec.js; pkill -n node;"
   },
   "repository": {
