@@ -20,11 +20,121 @@ module.exports = (players, roles, gods) => {
 
   }
 
+  // Map current assignments by role in order to detect team balance:
+  let assignments = {
+  	carry: null,
+  	support: null,
+  	mid: null,
+  	jungler: null,
+  	solo: null
+  };
+
+  // Helper function to check for duplicates
+  const checkDupes = (selection) => {
+  	for (let role in assignments) {
+  	  if (assignments[role] && assignments[role].name === selection.name) {
+  	  	console.log('dupe detected');
+  	  	return true;
+  	  }
+  	}
+  	return false;
+  };
+
+  // Helper function to make a selection and make necessary checks
+  const makeSelection = (cat, possibleGods, filtered) => {
+  	
+  	if (cat === 'carry' && !filtered) {
+  	  if ((assignments.support && assignments.support.type === 'physical') || (assignments.mid && assignments.mid.class === 'hunter')) {
+  	  	console.log('carry: physical support or hunter mid happened');
+  	  	possibleGods = possibleGods.filter((god) => {
+  	  	  return god.type === 'magical';
+  	  	});
+  	  }
+  	}
+
+  	if (cat === 'support' && !filtered) {
+  	  if (assignments.carry && assignments.carry.type === 'magical') {
+  	  	console.log('support: magical carry happened');
+  	  	possibleGods = possibleGods.filter((god) => {
+  	  	  return god.type === 'physical';
+  	  	});
+  	  }
+
+  	  if (assignments.jungler && assignments.jungler.class === 'guardian') {
+  	  	console.log('support: guardian jungler happened')
+  	  	possibleGods = possibleGods.filter((god) => {
+  	  	  return god.class !== 'guardian';
+  	  	});
+  	  }
+
+  	}
+
+  	if (cat === 'mid' && !filtered) {
+  	  if (assignments.carry && assignments.carry.type === 'magical') {
+  	  	console.log('mid: magical carry happened');
+  	  	possibleGods = possibleGods.filter((god) => {
+  	  	  return god.type === 'physical';
+  	  	});
+  	  }
+
+  	  if (assignments.support && assignments.support.type === 'physical') {
+  	  	console.log('mid: physical support happened');
+  	  	possibleGods = possibleGods.filter((god) => {
+  	  	  return god.type === 'physical';
+  	  	});
+  	  }
+
+  	}
+
+  	if (cat === 'jungler' && !filtered) {
+  	  if (assignments.support && assignments.support.class === 'guardian') {
+  	  	possibleGods = possibleGods.filter((god) => {
+  	  	  return god.class !== 'guardian';
+  	  	});
+  	  }
+
+  	  if ((assignments.carry && assignments.carry.class === 'assassin')) {
+  	  	console.log('jungler: assassin carry detected');
+  	  	possibleGods = possibleGods.filter((god) => {
+  	  	  return god.class !== 'assassin';
+  	  	});
+  	  }
+
+  	  if (assignments.solo && assignments.solo.type === 'magical') {
+	  	possibleGods = possibleGods.filter((god) => {
+	  	  return god.type === 'physical';
+	  	});
+  	  }
+
+  	}
+
+  	if (cat === 'solo' && !filtered) {
+  	  if (assignments.jungler && assignments.jungler.type === 'magical') {
+  	  	if (assignments.jungler.type === 'magical') {
+  	  	  possibleGods = possibleGods.filter((god) => {
+  	  	  	return god.type === 'physical';
+  	  	  });
+  	  	}
+  	  	if (assignments.jungler.type === 'physical') {
+  	  	  possibleGods = possibleGods.filter((god) => {
+  	  	  	return god.type === 'magical';
+  	  	  });
+  	  	}
+  	  }
+
+  	}
+
+	let randomSelector = Math.floor(Math.random() * possibleGods.length);
+	let selectedGod = possibleGods[randomSelector];
+	return checkDupes(selectedGod) ? makeSelection(cat, possibleGods, true) : selectedGod;
+  };
+
   for (let y = 0; y < players.length; y++) {
   	if (gods) {
   	  let possibleGods = gods[roles[y]] || [];
   	  let randomSelector = Math.floor(Math.random() * possibleGods.length);
-  	  result[players[y]] = [roles[y], possibleGods[randomSelector]];
+  	  result[players[y]] = [roles[y], makeSelection(roles[y], gods[roles[y]])];
+  	  assignments[roles[y]] = result[players[y]][1];
   	} else {
   	  result[players[y]] = [roles[y], null]
   	}
