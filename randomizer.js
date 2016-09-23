@@ -45,7 +45,6 @@ module.exports = (players, roles, gods) => {
   	
   	if (cat === 'carry' && !filtered) {
   	  if ((assignments.support && assignments.support.type === 'physical') || (assignments.mid && assignments.mid.class === 'hunter')) {
-  	  	console.log('carry: physical support or hunter mid happened');
   	  	possibleGods = possibleGods.filter((god) => {
   	  	  return god.type === 'magical';
   	  	});
@@ -54,14 +53,12 @@ module.exports = (players, roles, gods) => {
 
   	if (cat === 'support' && !filtered) {
   	  if (assignments.carry && assignments.carry.type === 'magical') {
-  	  	console.log('support: magical carry happened');
   	  	possibleGods = possibleGods.filter((god) => {
   	  	  return god.type === 'physical';
   	  	});
   	  }
 
   	  if (assignments.jungler && assignments.jungler.class === 'guardian') {
-  	  	console.log('support: guardian jungler happened')
   	  	possibleGods = possibleGods.filter((god) => {
   	  	  return god.class !== 'guardian';
   	  	});
@@ -71,14 +68,12 @@ module.exports = (players, roles, gods) => {
 
   	if (cat === 'mid' && !filtered) {
   	  if (assignments.carry && assignments.carry.type === 'magical') {
-  	  	console.log('mid: magical carry happened');
   	  	possibleGods = possibleGods.filter((god) => {
   	  	  return god.type === 'physical';
   	  	});
   	  }
 
   	  if (assignments.support && assignments.support.type === 'physical') {
-  	  	console.log('mid: physical support happened');
   	  	possibleGods = possibleGods.filter((god) => {
   	  	  return god.type === 'physical';
   	  	});
@@ -94,7 +89,6 @@ module.exports = (players, roles, gods) => {
   	  }
 
   	  if ((assignments.carry && assignments.carry.class === 'assassin')) {
-  	  	console.log('jungler: assassin carry detected');
   	  	possibleGods = possibleGods.filter((god) => {
   	  	  return god.class !== 'assassin';
   	  	});
