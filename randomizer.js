@@ -52,10 +52,20 @@ module.exports = (players, roles, gods) => {
   	}
 
   	if (cat === 'support' && !filtered) {
-  	  if (assignments.carry && assignments.carry.type === 'magical') {
-  	  	possibleGods = possibleGods.filter((god) => {
-  	  	  return god.type === 'physical';
-  	  	});
+  	  if (assignments.carry) {
+
+        if (assignments.carry.type === 'magical') {
+    	  	possibleGods = possibleGods.filter((god) => {
+    	  	  return god.type === 'physical';
+    	  	});
+        }
+
+        if (assignments.carry.type === 'physical') {
+          possibleGods = possibleGods.filter((god) => {
+            return god.type === 'magical';
+          });
+        }
+
   	  }
 
   	  if (assignments.jungler && assignments.jungler.class === 'guardian') {
