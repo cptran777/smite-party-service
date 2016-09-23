@@ -77,6 +77,7 @@ module.exports = (players, roles, gods) => {
   	}
 
   	if (cat === 'mid' && !filtered) {
+      
   	  if (assignments.carry && assignments.carry.type === 'magical') {
   	  	possibleGods = possibleGods.filter((god) => {
   	  	  return god.type === 'physical';

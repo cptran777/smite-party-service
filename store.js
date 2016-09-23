@@ -79,7 +79,7 @@ warrior.forEach((god) => {
   });
 });
 
-['hel', 'aphrodite', 'change', 'sol', 'zhong kui'].forEach((god) => {
+['hel', 'aphrodite', 'change', 'sol', 'chronos', 'zhong kui'].forEach((god) => {
   solo.push({
   	name: god,
   	type: 'magical',
