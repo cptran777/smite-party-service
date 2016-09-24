@@ -9,7 +9,7 @@ let app = express();
 /***************** INIT CUSTOM MODULES *********************/
 
 let randomizer = require('./randomizer');
-let gods = require('./store');
+let gods = require('./store').sortByRoles;
 
 /******************* INIT MIDDLEWARE ***********************/
 

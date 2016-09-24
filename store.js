@@ -136,9 +136,11 @@ assassin.forEach((god) => {
 });
 
 module.exports = {
-  carry,
-  support,
-  mid,
-  jungler,
-  solo
+  sortByRoles: {
+    carry,
+    support,
+    mid,
+    jungler,
+    solo
+  }
 };
