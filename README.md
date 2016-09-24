@@ -10,6 +10,9 @@ This is a purely backend service that will receive requests for randomized Smite
 
 [Link to Frontend Client](https://github.com/cptran777/smite-party)
 
+- The server expects 5 names and 5 roles.
+- The randomized roles take into account team balance by detecting team composition issues as roles are filled.
+
 ## Extensions
 
 Currently, the first iteration of the API will be a single file that contains the available roles inside lists on the server. A request is received and the response will be sent after randomization functionality has been called.
