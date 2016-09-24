@@ -137,7 +137,7 @@ assassin.forEach((god) => {
 
 /******************** SORT INTO IMAGES *********************/
 
-let thumbails = {
+let thumbnails = {
   izanami: null,
   agni: null,
   'ah muzen cab': null,

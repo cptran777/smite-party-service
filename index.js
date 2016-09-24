@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api', (req, res) => {
-  console.log('req body? :', req.body);
+
   let players, roles;
   if (req.body.players) {
   	players = req.body.players;
@@ -40,7 +40,18 @@ app.get('/api', (req, res) => {
   	players = ['Charlie', 'Brent', 'Matt', 'Kevin', 'Andrew'];
   	roles = ['carry', 'jungler', 'support', 'mid', 'solo'];
   }
-  res.send(randomizer(players, roles, gods));
+
+  // User randomizer module to make assignments to people
+  let assignments = randomizer(players, roles, gods);
+
+  // Add images to their god assignments
+  for (let person in assignments) {
+    assignments[person][1].images = {
+      thumbnail: thumbnails[assignments[person][1].name]
+    }
+  }
+
+  res.send(assignments);
 });
 
 /********************* INIT SERVER *************************/
