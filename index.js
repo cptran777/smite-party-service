@@ -9,7 +9,10 @@ let app = express();
 /***************** INIT CUSTOM MODULES *********************/
 
 let randomizer = require('./randomizer');
-let gods = require('./store').sortByRoles;
+let pseudoDb = require('./store');
+
+let gods = pseudoDb.sortByRoles;
+let thumbnails = pseudoDb.images.thumbnails;
 
 /******************* INIT MIDDLEWARE ***********************/
 

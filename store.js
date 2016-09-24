@@ -227,5 +227,8 @@ module.exports = {
     mid,
     jungler,
     solo
+  },
+  images: {
+    thumbnails
   }
 };
