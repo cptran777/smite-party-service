@@ -5,7 +5,7 @@
 /********************* SORT BY CLASS ***********************/
 
 let hunter = ['izanami', 'artemis', 'ah muzen cab', 'anhur', 'apollo', 'chiron', 'cupid', 'hou yi', 'jing wei', 'medusa', 'neith', 'rama', 'skadi', 'ullr', 'xbalanque'];
-let mage = ['agni', 'ao kuang', 'au puch', 'anubis', 'aphrodite', 'change', 'chronos', 'freya', 'hades', 'he bo', 'hel', 'isis', 'janus', 'kukuku', 'nox', 'nu wa', 'poseidon', 'ra', 'raijin', 'scylla', 'sol', 'vulcan', 'zeus', 'zhong kui'];
+let mage = ['agni', 'ao kuang', 'au puch', 'anubis', 'aphrodite', 'change', 'chronos', 'freya', 'hades', 'he bo', 'hel', 'isis', 'janus', 'kukulkan', 'nox', 'nu wa', 'poseidon', 'ra', 'raijin', 'scylla', 'sol', 'vulcan', 'zeus', 'zhong kui'];
 let warrior = ['amaterasu', 'bellona', 'chaac', 'erlang shen', 'guan yu', 'hercules', 'odin', 'osiris', 'ravana', 'sun wukong', 'tyr', 'vamana'];
 let guardian = ['ares', 'athena', 'bacchus', 'cabrakan', 'fafnir', 'geb', 'khepri', 'kumbakharna', 'sobek', 'sylvanus', 'terra', 'xing tian', 'ymir'];
 let assassin = ['arachne', 'awilix', 'bakasura', 'bastet', 'fenrir', 'hun batz', 'kali', 'loki', 'mercury', 'ne zha', 'nemesis', 'ratatoskr', 'serqet', 'susano', 'thanatos', 'thor'];
@@ -134,6 +134,91 @@ assassin.forEach((god) => {
   	class: 'guardian'
   });
 });
+
+/******************** SORT INTO IMAGES *********************/
+
+let thumbails = {
+  izanami: null,
+  agni: null,
+  'ah muzen cab': null,
+  'ah puch': null,
+  amaterasu: null,
+  anhur: null,
+  anubis: null,
+  'ao kuang': null,
+  aphrodite: null,
+  apollo: null,
+  arachne: null,
+  ares: null,
+  artemis: null,
+  athena: null,
+  awilix: null,
+  bacchus: null,
+  bakasura: null,
+  bastet: null,
+  bellona: null,
+  cabrakan: null,
+  chaac: null,
+  change: null,
+  chiron: null,
+  chronos: null,
+  cupid: null,
+  'erlang shen': null,
+  fafnir: null,
+  fenrir: null,
+  freya: null,
+  geb: null,
+  'guan yu': null,
+  hades: null,
+  'he bo': null,
+  hel: null,
+  hercules: null,
+  'hou yi': null,
+  'hun batz': null,
+  isis: null,
+  janus: null,
+  'jing wei': null,
+  kali: null,
+  khepri: null,
+  kukulkan: null,
+  kumbakharna: null,
+  loki: null,
+  medusa: null,
+  mercury: null,
+  'ne zha': null,
+  neith: null,
+  nemesis: null,
+  nox: null,
+  'nu wa': null,
+  odin: null,
+  osiris: null,
+  poseidon: null,
+  ra: null,
+  raijin: null,
+  rama: null,
+  ratatoskr: null,
+  ravana: null,
+  scylla: null,
+  serqet: null,
+  skadi: null,
+  sobek: null,
+  sol: null,
+  'sun wukong': null,
+  susano: null,
+  sylvanus: null,
+  terra: null,
+  thanatos: null,
+  thor: null,
+  tyr: null,
+  ullr: null,
+  vamana: null,
+  vulcan: null,
+  xbalanque: null,
+  'xing tian': null,
+  ymir: null,
+  zeus: null,
+  'zhong kui': null
+};
 
 module.exports = {
   sortByRoles: {
