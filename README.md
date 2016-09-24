@@ -17,6 +17,8 @@ This is a purely backend service that will receive requests for randomized Smite
 
 Currently, the first iteration of the API will be a single file that contains the available roles inside lists on the server. A request is received and the response will be sent after randomization functionality has been called.
 
+Need to create the store in a way that's closer to a database entry and assign images there instead of in the index. 
+
 ### Iteration Plans: 
 
 1) Customized lists. Basic lists of gods should include them purely sorted by type (Warrior, Mage, etc). Then there should be role-based lists (Healer, Tank, CC, etc) in addition to the fixed role lists (Jungler, Mid, etc). The goal will be to allow people to choose what type or role based list should be included in a role instead of a purely fixed list. 
