@@ -169,122 +169,59 @@ let carry = [],
 	support = [],
 	jungler = [];
 
+const populateRole = (role, list) => {
+  list.forEach((god) => {
+    role.push(god);
+  });
+}
+
+const createSubList = (godClass, subList) => {
+  return godClass.filter((god) => {
+    return subList.indexOf(god.name) > -1;
+  });
+}
+
 // Populate carry
-hunter.forEach((god) => {
-  carry.push({
-  	name: god,
-  	type: 'physical',
-  	class: 'hunter'
-  });
-});
+const carryMages = createSubList(gods.mages, ['freya', 'chronos', 'sol']);
+const carryAssassins = createSubList(gods.assassins, ['bastet', 'loki']);
 
-['freya', 'chronos', 'sol'].forEach((god) => {
-  carry.push({
-  	name: god,
-  	type: 'magical',
-  	class: 'mage'
-  });
-});
-
-['bastet', 'loki'].forEach((god) => {
-  carry.push({
-  	name: god,
-  	type: 'physical',
-  	class: 'assassin'
-  });
-});
+populateRole(carry, 
+  gods.hunters.concat(carryMages)
+              .concat(carryAssassins));
 
 // Populate mid
-mage.forEach((god) => {
-  if (god !== 'ao kuang') {
-  	mid.push({
-  	  name: god,
-  	  type: 'magical',
-  	  class: 'mage'
-  	})
-  }
-});
+const midHunters = createSubList(gods.hunters, ['neith', 'cupid']);
 
-['neith', 'cupid'].forEach((god) => {
-  mid.push({
-  	name: god,
-  	type: 'physical',
-  	class: 'hunter'
-  });
-});
+populateRole(mid, 
+  gods.mages.filter((god) => {
+    return god.name !== 'ao kuang';
+  }).concat(midHunters));
 
 // Populate solo
-warrior.forEach((god) => {
-  solo.push({
-  	name: god,
-  	type: 'physical',
-  	class: 'warrior'
-  });
-});
+const soloHunters = createSubList(gods.hunters, ['skadi', 'neith', 'ullr', 'ah muzen cab', 'cupid']);
+const soloMages = createSubList(gods.mages, ['hel', 'aphrodite', 'change', 'sol', 'chronos', 'zhong kui']);
 
-['skadi', 'neith', 'ullr', 'ah muzen cab', 'cupid'].forEach((god) => {
-  solo.push({
-  	name: god,
-  	type: 'physical',
-  	class: 'hunter'
-  });
-});
-
-['hel', 'aphrodite', 'change', 'sol', 'chronos', 'zhong kui'].forEach((god) => {
-  solo.push({
-  	name: god,
-  	type: 'magical',
-  	class: 'hunter'
-  });
-});
+populateRole(solo,
+  gods.warriors.concat(soloHunters)
+               .concat(soloMages));
 
 // Populate support
-guardian.forEach((god) => {
-  support.push({
-  	name: god,
-  	type: 'magical',
-  	class: 'guardian'
-  });
-});
+const supportMages = createSubList(gods.mages, ['change', 'aphrodite']);
+const supportWarriors = createSubList(gods.warriors, ['odin']);
 
-['change', 'aphrodite'].forEach((god) => {
-  support.push({
-  	name: god,
-  	type: 'magical',
-  	class: 'mage'
-  });
-});
-
-support.push({
-  name: 'odin',
-  type: 'physical',
-  class: 'warrior'
-});
+populateRole(support, 
+  gods.guardians.concat(supportMages)
+                .concat(supportWarriors));
 
 // Populate jungler
-assassin.forEach((god) => {
-  jungler.push({
-  	name: god,
-  	type: 'physical',
-  	class: 'assassin'
-  });
-});
+const junglerMages = createSubList(gods.mages, ['ao kuang', 'freya']);
+const junglerGuardians = createSubList(gods.guardians, ['cabrakan', 'kumbakharna', 'bacchus', 'ymir']);
+const junglerWarriors = createSubList(gods.warriors, ['amaterasu', 'odin', 'tyr']);
 
-['ao kuang', 'freya'].forEach((god) => {
-  jungler.push({
-  	name: god,
-  	type: 'magical',
-  	class: 'mage'
-  });
-});
-
-['cabrakan', 'kumbakharna', 'bacchus', 'ymir'].forEach((god) => {
-  jungler.push({
-  	name: god,
-  	type: 'magical',
-  	class: 'guardian'
-  });
-});
+populateRole(jungler,
+  gods.assassins.concat(junglerMages)
+                .concat(junglerGuardians)
+                .concat(junglerWarriors));
 
 module.exports = {
   sortByRoles: {
@@ -293,8 +230,5 @@ module.exports = {
     mid,
     jungler,
     solo
-  },
-  images: {
-    thumbnails
   }
 };

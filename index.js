@@ -12,7 +12,6 @@ let randomizer = require('./randomizer');
 let pseudoDb = require('./store');
 
 let gods = pseudoDb.sortByRoles;
-let thumbnails = pseudoDb.images.thumbnails;
 
 /******************* INIT MIDDLEWARE ***********************/
 
