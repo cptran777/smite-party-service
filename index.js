@@ -43,14 +43,8 @@ app.get('/api', (req, res) => {
   // User randomizer module to make assignments to people
   let assignments = randomizer(players, roles, gods);
 
-  // Add images to their god assignments
-  for (let person in assignments) {
-    assignments[person][1].images = {
-      thumbnail: thumbnails[assignments[person][1].name]
-    }
-  }
-
   res.send(assignments);
+  
 });
 
 /********************* INIT SERVER *************************/
