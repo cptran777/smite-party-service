@@ -3,6 +3,7 @@
 
 let express = require('express');
 let bodyparser = require('body-parser');
+let path = require('path');
 
 let app = express();
 
@@ -44,7 +45,14 @@ app.get('/api', (req, res) => {
   let assignments = randomizer(players, roles, gods);
 
   res.send(assignments);
-  
+
+});
+
+app.get('/pic', (req, res) => {
+
+  console.log('received request');
+  res.sendFile(path.join(__dirname, './assets', 'agni.png'));
+
 });
 
 /********************* INIT SERVER *************************/
