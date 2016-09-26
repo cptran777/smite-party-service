@@ -48,10 +48,11 @@ app.get('/api', (req, res) => {
 
 });
 
-app.get('/pic', (req, res) => {
+app.get('/images', (req, res) => {
 
   console.log('received request');
-  res.sendFile(path.join(__dirname, './assets', 'agni.png'));
+  let name = req.query.name;
+  res.sendFile(path.join(__dirname, './assets/images', name + '.jpg'));
 
 });
 
